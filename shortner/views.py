@@ -23,15 +23,18 @@ def shorten():
 
 
 def submit(request):
+    domain = request.scheme +"://" + request.get_host() + '/'
     form = CreateShortURL(request.POST or None)
-    if request.method == 'POST' and  form.is_valid():
+    if request.method == 'POST' and form.is_valid():
         original_url = form.cleaned_data['big_url']
         short_url = shorten()
         Urls.objects.create(big_url = original_url,
                             short_url = short_url)
             
-        return render(request,'shortner/shortner.html',{"short_url":'http://localhost:9000/'+short_url+'/'})
-
+        return render(request,'shortner/shortner.html',{"short_url": domain + short_url+'/'})
+    if not form.is_valid():
+        # print("OKKKKK")
+        return render(request, 'shortner/shortner.html',{"invalid_case" : "Invalid URL"})
     return render(request, 'shortner/home.html')
 
 

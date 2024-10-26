@@ -8,10 +8,58 @@
         }
     </style>
 
+    <style>
+        .container {
+            height: 200px;
+            position: relative;
+            /* border: 3px solid green; */
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> -->
+    <script>
+        function myFunction(text) {
+            navigator.clipboard.writeText(text);
+
+            alert("Copied the text: " + text);
+        }
+    </script>
+
 <body>
-    <p>Here is your shortened URL!</p>
-    <h1>{{short_url}}</h1>
-    <button onclick="history.back()" style="background-color: rgb(90, 90, 224); width: 150px; height: 50px; font-size:20px;">Go Back</button>
+    {% if invalid_case %}
+    <h1>
+        <center>Invalid URL!&#128579;</center>
+
+    </h1>
+    {% else %}
+    <p>
+        <center>Here is your shortened URL!</center>
+    </p>
+    <h1>
+        <center> <a href="{{short_url}}"> {{short_url}} </a>  
+          
+                <button onclick="myFunction('{{short_url}}')"
+                    style="background-color: rgb(34, 161, 56);border:0mm; margin: 10px; width: 100px; height: 30px; font-size:10px;">copy
+                </button>
+            
+    </h1>
+    {% endif %}
+    <div class="container">
+        <div class="center">
+            <button onclick="history.back()"
+                style=" background-color: rgb(90, 90, 224); width: 150px; height: 50px; font-size:20px;">Go
+                Back</button>
+        </div>
+    </div>
+
 
 </body>
 </head>
