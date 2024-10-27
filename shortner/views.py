@@ -42,7 +42,7 @@ def redirect(request, short_url):
     try:
         big_url = Urls.objects.get(short_url = short_url).big_url
     except:
-        return HttpResponse("Page not found")
+        return render(request, 'shortner/page_not_found.html')
     return HttpResponseRedirect(big_url)
     
 
