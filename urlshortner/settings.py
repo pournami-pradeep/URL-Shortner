@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pkj0k1h(3!6zww8jw33e6@iwz-i(%hui3deu%weg-f#0thuy^u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://frozen-drusi-hifx-b4cd9ded.koyeb.app']
+ALLOWED_HOSTS = ['frozen-drusi-hifx-b4cd9ded.koyeb.app']
 CSRF_TRUSTED_ORIGINS = ["https://frozen-drusi-hifx-b4cd9ded.koyeb.app"]
 
 
